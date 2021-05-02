@@ -1,0 +1,16 @@
+Script started on 2021-03-20 01:20:35+05:30 [TERM="xterm-256color" TTY="/dev/tty1" COLUMNS="177" LINES="10"]
+]0;raghav@RaghavGoenka: /mnt/c/Users/ragha/Downloads/DataStructurexClass/Algorithms[01;32mraghav@RaghavGoenka[00m:[01;34m/mnt/c/Users/ragha/Downloads/DataStructurexClass/Algorithms[00m$ exir
+
+Command 'exir' not found, did you mean:
+
+  command 'exif' from deb exif (0.6.21-2)
+  command 'expr' from deb coreutils (8.30-3ubuntu2)
+  command 'exim' from deb exim4-daemon-heavy (4.93-13ubuntu1.1)
+  command 'exim' from deb exim4-daemon-light (4.93-13ubuntu1.1)
+
+Try: sudo apt install <deb name>
+
+]0;raghav@RaghavGoenka: /mnt/c/Users/ragha/Downloads/DataStructurexClass/Algorithms[01;32mraghav@RaghavGoenka[00m:[01;34m/mnt/c/Users/ragha/Downloads/DataStructurexClass/Algorithms[00m$ exir[Kt
+exit
+
+Script done on 2021-03-20 01:20:47+05:30 [COMMAND_EXIT_CODE="127"]

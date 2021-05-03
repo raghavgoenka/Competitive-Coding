@@ -33,14 +33,15 @@ void solve(){
   
  ll num = 9;
         ll ans = 0;
+        ll p=10;
  
         while(num <= b){
-            num *= 10LL;
+            num *= p;
             num += 9;
             ans += a;
-            cout<<num<<" "<<num<<" "<<ans<<endl;
+            
         }
- 
+        cout<<ans<<endl;
         
 }
 

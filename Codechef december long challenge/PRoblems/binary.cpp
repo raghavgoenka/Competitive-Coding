@@ -28,15 +28,28 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   string s;
+   string s;cin>>s;
    ll len=s.size();
-  
+   if(s=="1"){cout<<"0"<<endl;return;}
+   int c=0;
    while(len>1)
    { 
-       if(s[len-1]=='0'){s.pop_back();len--;}
-
+       if(s[len-1]=='0'){s.pop_back();len--; }
+       else{
+            int p=len-1;
+         forr(int,i,len)
+         {
+             if(s[i]=='1'){s[i]='0';}
+             else{s[i]='1';break;}
+             p--;
+         }
+         if(p<0){s='1'+s;len++;}
+         
+       }
+    
+      c++;
    }
-
+ cout<<c<<endl;
 }
 
 int main(){
@@ -44,7 +57,7 @@ int main(){
 
     flash;
 
-    ll t; cin >> t;
+    ll t=1;
     while(t--){
         solve();
     }

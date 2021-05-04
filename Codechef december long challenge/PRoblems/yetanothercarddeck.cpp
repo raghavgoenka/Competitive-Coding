@@ -1,8 +1,9 @@
-//https://codeforces.com/contest/535/problem/B
+//https://codeforces.com/contest/1511/problem/C
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 #define pb push_back
+#define pf push_front
 #define eb emplace_back
 #define ff first
 #define ss second
@@ -26,19 +27,21 @@ typedef vector<vector<int>> vvi;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
-typedef map<long long ,long long>mll;
+typedef map<int,int>mll;
 void solve(){
-   string n;cin>>n;
-   int index=0,pow2=1;
-	forr(int,i,n.length()) {
-		if(n[i]=='7') {index+=2*pow2;}
-		else{ index+=pow2;}
-		pow2*=2;
-	}
-   int id=index;
-   cout<<id<<" ";
-   
-}
+   int n,q;cin>>n>>q;
+   deque<int>d;
+   forf(int,i,n){int p;cin>>p;d.pb(p);}
+   while(q--)
+   {
+       int num;cin>>num;
+       auto it=find(d.begin(),d.end(),num);
+        cout<<it-d.begin()+1<<" ";
+        d.erase(it);
+        d.push_front(num);
+   }
+   cout<<endl;
+ }
 
 int main(){
     

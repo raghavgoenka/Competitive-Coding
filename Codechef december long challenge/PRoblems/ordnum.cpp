@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/1520/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -22,13 +23,30 @@ typedef vector<int> vi;
 typedef vector<long> vl;
 typedef vector<long long> vll;
 typedef vector<vector<int>> vvi;
-typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   
+   ll n;cin>>n;
+   if(n<10){cout<<n<<endl;return;}
+   ll count =0;
+  ll p = 0, res = 0;
+  
+  
+    ll a = log10(n) + 1;
+  
+    for (ll i = 0; i < a; i++) {
+        p = p * 10 + 1;
+        for (ll j = 1; j <= 9; j++) {
+  
+            if (1 <= (p * j)
+                && (p * j) <= n) {
+                 res++;
+            }
+        }
+    }
+cout<<res<<endl;
 }
 
 int main(){

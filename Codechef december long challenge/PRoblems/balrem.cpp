@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/1490/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -22,12 +23,28 @@ typedef vector<int> vi;
 typedef vector<long> vl;
 typedef vector<long long> vll;
 typedef vector<vector<int>> vvi;
-typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
+   int n;cin>>n;
+   int c0=0,c1=0,c2=0;
+   forf(int,i,n){int num;cin>>num;if(num%3==0){c0++;} else if(num%3==1){c1++;} else{c2++;}}
+ 
+   if(c0==c1&&c1==c2){cout<<"0"<<endl;return;}
+   int req=n/3,c=0;
+
+  while(c0!=c1||c1!=c2){
+     
+   if(c2>req){c0+=c2-req;c+=c2-req;c2=req;}
+   if(c0>req){c1+=c0-req;c+=c0-req;c0=req;}
+   if(c1>req){c2+=c1-req;c+=c1-req;c1=req;}
+  }
+
+   
+   if(c0==c1&&c1==c2){cout<<c<<endl;}
+   
    
 }
 

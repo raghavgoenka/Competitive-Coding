@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/1520/problem/0
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -22,13 +23,26 @@ typedef vector<int> vi;
 typedef vector<long> vl;
 typedef vector<long long> vll;
 typedef vector<vector<int>> vvi;
-typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
-typedef map<long long ,long long>mll;
+typedef map<char ,long long>mll;
 void solve(){
-   
+    int n;cin>>n;
+   string s;cin>>s;
+   mll mp;
+   char c=s[0];
+   mp[c]++;
+   for(int i=1;i<n;i++)
+   {
+       if(s[i]==c){mp[c]++;}
+       else{
+           c=s[i];
+           if(mp[c]>0){cout<<"NO"<<endl;return;}
+           mp[c]++;
+       }       
+   }
+   cout<<"YES"<<endl;
 }
 
 int main(){

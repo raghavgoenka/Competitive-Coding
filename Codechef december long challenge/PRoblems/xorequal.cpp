@@ -1,4 +1,4 @@
-//https://codeforces.com/problemset/problem/271/A
+//https://www.codechef.com/MAY21B/problems/XOREQUAL    
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -27,33 +27,32 @@ typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
-typedef map<char ,long long>mll;
-void solve(){
-   int n;cin>>n;
-   n++;
-   while(1)
-   {
-       string s=to_string(n);
-       mll mp;
-       int p=0;
-       for(auto i:s)
-       {
-           mp[i]++;
-           if(mp[i]>1){break;}
-           else{p++;}
+typedef map<long long ,long long>mll;
+#define N 100002
+#define mod 1000000007
+ll arr[N];
+void calculate()
+{
+    arr[0]=1;
+    arr[1]=2;
+    for(int i=2;i<=100000;i++)
+    {
+        arr[i]=((arr[i-1]*2)%mod);
+    }
 
-       }
-       if(p==4){cout<<n<<endl;return;}
-      n++;
-   }
+}
+void solve(){
+   ll n;cin>>n;
+  cout<<arr[n-1]<<endl;;
+
 }
 
 int main(){
     
-
+   calculate();
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

@@ -1,4 +1,4 @@
-//https://codeforces.com/problemset/problem/271/A
+//https://www.codechef.com/MAY21C/problems/ISS
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -27,25 +27,22 @@ typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
-typedef map<char ,long long>mll;
+typedef map<long long ,long long>mll;
 void solve(){
-   int n;cin>>n;
-   n++;
-   while(1)
+   ll k;cin>>k;
+   ll arr[2*k+2];
+ll sum=0;
+   for(ll i=1;i<=2*k+1;i++)
    {
-       string s=to_string(n);
-       mll mp;
-       int p=0;
-       for(auto i:s)
-       {
-           mp[i]++;
-           if(mp[i]>1){break;}
-           else{p++;}
-
-       }
-       if(p==4){cout<<n<<endl;return;}
-      n++;
+        arr[i]=k+pow(i,2);
+       
    }
+  
+   for(ll i=1;i<=2*k;i++)
+   {
+       sum+=__gcd(arr[i],arr[i+1]);
+   }
+   cout<<sum<<endl;
 }
 
 int main(){
@@ -53,7 +50,7 @@ int main(){
 
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

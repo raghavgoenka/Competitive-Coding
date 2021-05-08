@@ -1,4 +1,4 @@
-//https://codeforces.com/problemset/problem/271/A
+//https://codeforces.com/contest/1521/problem/A
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -27,25 +27,32 @@ typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
-typedef map<char ,long long>mll;
+typedef map<long long ,long long>mll;
+#define N 1e18+1
 void solve(){
-   int n;cin>>n;
-   n++;
-   while(1)
-   {
-       string s=to_string(n);
-       mll mp;
-       int p=0;
-       for(auto i:s)
-       {
-           mp[i]++;
-           if(mp[i]>1){break;}
-           else{p++;}
-
-       }
-       if(p==4){cout<<n<<endl;return;}
-      n++;
-   }
+   ll a,b;cin>>a>>b;
+   ll num=a*b;
+   ll con=a*b;
+   ll p=a*2;
+   ll i=3,x,y,z,flag=1;
+   if(b==1){cout<<"NO"<<endl;return;}
+ while(p<N)
+ {  
+      ll d=abs(num-p);
+      
+      if(d!=0&&p!=d&&(d)%a==0&&((p)/a!=a)&&d!=a&&d!=num&&d%con!=0&&p%con!=0){x=p,y=num,z=d;flag=0;break;}
+      
+      i++;
+      p=a*i;
+}
+ if(flag==0)
+ {cout<<"YES"<<endl;
+     if(x+y==z){cout<<x<<" "<<y<<" "<<z<<endl;}
+     else if(y+z==x){cout<<y<<" "<<z<<" "<<x<<endl;}
+     else if(x+z==y){cout<<z<<" "<<x<<" "<<y<<endl;}
+     return;
+ }
+cout<<"NO"<<endl;
 }
 
 int main(){
@@ -53,7 +60,7 @@ int main(){
 
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

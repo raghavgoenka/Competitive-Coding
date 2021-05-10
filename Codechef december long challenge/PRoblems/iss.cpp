@@ -28,26 +28,30 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
+umll mp;
+void calculate()
+{
+    mp[0]=0;
+    mp[1]=1;
+    for(ll i=2;i<=2000008;i++)
+    {
+        mp[i]=i*i;
+     }
+
+}
 void solve(){
    ll k;cin>>k;
-   ll arr[2*k+2];
-ll sum=0;
-   for(ll i=1;i<=2*k+1;i++)
-   {
-        arr[i]=k+pow(i,2);
-       
-   }
-  
+    ll sum=0;
    for(ll i=1;i<=2*k;i++)
    {
-       sum+=__gcd(arr[i],arr[i+1]);
+       sum+=__gcd(mp[i]+k,mp[i+1]+k);
    }
    cout<<sum<<endl;
 }
 
 int main(){
     
-
+  calculate();
     flash;
 
     ll t; cin >> t;

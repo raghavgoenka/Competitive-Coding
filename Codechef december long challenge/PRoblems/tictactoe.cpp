@@ -32,7 +32,7 @@ typedef map<long long ,long long>mll;
 int mx=0,my=0;
  int winPos[8][3] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
   int gamestate[9] = {2, 2, 2, 2, 2, 2, 2, 2, 2};
-  set<int>st;
+ 
 
 void winning()
 {
@@ -40,13 +40,11 @@ void winning()
     {
        
      if (gamestate[win[0]] == gamestate[win[1]] && gamestate[win[1]] == gamestate[win[2]] && gamestate[win[0]] != 2&&gamestate[win[0]]==1) {
-          st.it(win[0]);
-          st.it(win[1]);
-          st.it(win[2]);
-          mx++;
+         
+          mx=1;
      }
      else if (gamestate[win[0]] == gamestate[win[1]] && gamestate[win[1]] == gamestate[win[2]] && gamestate[win[0]] != 2&&gamestate[win[0]]==0){
-          my++;
+          my=1;
      }
 }
  
@@ -62,15 +60,14 @@ void solve(){
        else if(ch=='_'){em.pb(i);gamestate[i]=2;}
    }
    int a=x.size(),b=o.size(),c=em.size();
-   if(c==9){cout<<"1"<<endl;return;}
+   if(c==9&&a==0&&b==0){cout<<"2"<<endl;return;}
    if((a-b)>1){cout<<"3"<<endl;return;}
    if(b>a){cout<<"3"<<endl;return;}
 //   if(c==0&&a==5&&b==4){cout<<"1"<<endl;return;}
-   st.clear();
-   
+ 
   winning();
 
-     if(mx==2&&my==0&&a==5&&b==4&&st.size()==5){cout<<"1"<<endl;return;}
+    //  if(mx==2&&my==0&&a==5&&b==4&){cout<<"1"<<endl;return;}
      if(mx>0&&my>0){cout<<"3"<<endl;return;}
      
      if(mx==1&&a==(b+1)){cout<<"1"<<endl;return;}
@@ -82,13 +79,13 @@ void solve(){
     mx=0,my=0;
      
    
-   if(a>5||b>4){cout<<"3"<<endl;return;}
+//    if(a>5||b>4){cout<<"3"<<endl;return;}
 
    if(c==1&&(a==4&&b==4))
    {
        x.pb(em[0]);gamestate[em[0]]=1;
        winning();
-       if(mx>0){cout<<"1"<<endl;return;}
+       if(mx>0){cout<<"2"<<endl;return;}
       else{ cout<<"2"<<endl;return;}}
    if(c==1&&(a+1)>5){cout<<"3"<<endl;return;}
 
@@ -102,12 +99,12 @@ void solve(){
           a+=c/2;
           b+=c/2;
            if(a+b>9){cout<<"3"<<endl;return;}
-           else{cout<<"1"<<endl;return;}
+           else{cout<<"2"<<endl;return;}
            }
        else{
              a+=(c/2)+1;b+=c/2;
              if(a+b>9){cout<<"3"<<endl;return;}
-             else{cout<<"1"<<endl;return;}
+             else{cout<<"2"<<endl;return;}
        }
    }
    

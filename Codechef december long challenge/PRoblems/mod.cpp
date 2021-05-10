@@ -31,13 +31,21 @@ typedef map<long long ,long long>mll;
 void solve(){
    ll n ,m;cin>>n>>m;
    ll c=n-1;
-  
-   for(ll i=2;i<=n;i++)
-   {
-       for(ll j=i+1;j<=n;j++)
-       {
-           if((m%i)%j==(m%j)%i){cout<<i<<"--"<<j<<" ";c++;}
-       }
+   if(m==1){ll p=n-2;c+=(p*(p+1))/2;cout<<c<<endl;return;}
+ 
+     for(ll i=2;i<n;i++)
+   {  
+        if(m<i&&m<n){c+=n-i;continue;}
+       else  if(m==i&&m<n){c+=n-i;continue;}
+        else if(i<m&&n==m){continue;}
+      else
+      {
+          for(ll j=i+1;j<=n;j++)
+      {
+           if((m%i)%j==(m%j)%i){c++;}
+      }
+          
+      }
    }
    cout<<c<<endl;
 }

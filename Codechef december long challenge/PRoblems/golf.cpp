@@ -1,4 +1,3 @@
-//https://www.codechef.com/MAY21B/problems/MODEQ
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -28,21 +27,10 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
-
 void solve(){
-   ll n ,m;cin>>n>>m;
-   ll c=0;
-   if(m==1){ll p=n-2;c+=(p*(p+1))/2;cout<<c+(n-1)<<endl;return;}
-   vll v(n+1,1);
-   
-    
-     for(ll i=2;i<=n;i++)
-   {  
-        ll rem=m%i;
-        c=c+v[rem];
-        for(ll j=rem;j<=n;j+=i){v[j]++;}
-   }
-   cout<<c<<endl;
+   ll n,x,k;cin>>n>>x>>k;
+   if(x%k==0||(n+1)%k==(x%k)){cout<<"YES"<<endl;}
+   else{cout<<"NO"<<endl;}
 }
 
 int main(){

@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 #include <iostream>
 #include <chrono>
-using namespace std::chrono;
 using namespace std;
+using namespace std::chrono;
+
 void SwapValue(int a, int b)
 {
     int t = a;

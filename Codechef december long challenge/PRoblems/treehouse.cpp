@@ -28,86 +28,66 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
-umll mp1;
+
 vll v[1000001];
-ll count1[1000001];
-void numberOfNodes(ll s, ll e)
+ vll v1,vc;
+  vp pp;
+void leafnode(int node,int p)
 {
-   vector<ll>::iterator u;
-  
-    count1[s] = 1;
-    for (u = v[s].begin(); u != v[s].end(); u++) {
-      
-          if (*u == e)
-            { continue;}
-          numberOfNodes(*u, s);
-          count1[s] += count1[*u];
-    }
+     for(auto v:v[node])
+   {
+       if(v==p || v==1)continue;
+       leafnode(v,node);
+   }
+ pp.clear();
+   for(auto i:v[node])
+   {
+       if(i!=p && i!=1)
+       pp.pb({vc[i],i});
+   }
+   sort(rall(pp));
+   int ctr=1;
+   for(auto i:pp)
+   {
+       v1[i.ss]=ctr;
+       ctr++;
+   }
+   for(auto i:v[node])   
+   {
+       if(i!=p && i!=1)
+       {
+           vc[node]=(vc[node]+(v1[i]*vc[i]));
+       }
+   }
+
 }
-bool cc(const pair<ll,ll> &a,const pair<ll,ll> &b)
-{ 
-    if(a.second==b.second&&mp1[a.first]!=mp1[b.first]&&a.second!=0&&b.second!=0)
-    {cout<<"in "<<" "; 
-        //add here hwen num of elem ar equal but height is different then max goes to more height one
-    //    cout<<a.first<<"--"<<a.second<<endl;
-    //    cout<<b.first<<"--"<<b.second<<endl;
-        if(mp1[a.first]>mp1[b.first]){return true;}
-        else{return false;}
-    }
-    return (a.second >b.second);
-}
+
+
 
 void solve(){
    
    
    ll n,x;cin>>n>>x;
-   umll mp ;
-  
-  mp1.clear();
-   umll mp_val;
-   forf(ll,i,n+3){v[i+1].clear();count1[i+1]=0;}
+    forf(int,i,n){v[i+1].clear();}
+   vc.assign(n+1,1);
+    v1.assign(n+1,0);
+ 
+   umll mp_vl;
+   
    x=x%mod;
    forf(ll,i,n-1)
    {  ll a,b;cin>>a>>b;
       
        v[a].pb(b);
-       mp1[a]=v[a].size();
+       v[b].pb(a);
+   
    }
-//    for(auto i:mp1){cout<<i.first<<"--"<<i.second<<" ";}
-   // if height of subtree is greater n number of elements are more then the max value goes to other side!
-   // else if height of subtree is more n number of elements are same then max value will go the this side!
-   numberOfNodes(1, 0);
- 
 
-   for (ll i = 1; i <=n; i++) {
-    //    cout << "\nNodes in subtree of " << i;
-    //     cout << ": " << count1[i];
-        mp[i]=count1[i]-1;
-    }
-//     cout<<endl;
-//    for(auto i:mp){cout<<i.first<<"--"<<i.second<<" ";} 
-   mp_val[1]=x%mod;
-   for(ll i=1;i<=n;i++)
-   {  
-      if(v[i].size()==0){continue;}
-       if(v[i].size()==1){mp_val[v[i][0]]=mp_val[i]%mod;continue;}
-       vp st;
-      for(ll node:v[i])
-      {   
-           st.pb({node,mp[node]});
-      }
-      sort(st.begin(), st.end(), cc);
+   leafnode(1,0);
+  
 
-      for (ll p=0; p<st.size(); p++)
-    	{   
-		     mp_val[st[p].first]=((mp_val[i]%mod)*((p+1)%mod))%mod;
-    	}
-   }
-     ll sum=0;
-     for(auto i:mp_val){
-        //  cout<<i.first<<"--"<<i.second<<" ";
-    sum=((sum%mod)+(i.second%mod))%mod;}
-     cout<<sum<<endl;
+  ll res=((vc[1]%mod*x)+mod)%mod;
+  cout << res <<endl;
 }
 
 int main(){

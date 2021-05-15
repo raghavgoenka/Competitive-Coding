@@ -19,11 +19,13 @@ int main()
     cout<<"Enter elements:\n";
     for(int i=0;i<m;i++)
        { cin>>b[i];freq[b[i]]--;}
-
+cout<<endl;
     for(int i=0;i<10000;i++)
     {   
         if(freq[i]>0||freq[i]<0){cout<<i<<" ";}
        
     }   
+    cout<<endl;
+
 
 }       

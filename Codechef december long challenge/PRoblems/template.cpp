@@ -12,6 +12,8 @@
 #define forf(t,i,n) for(t i=0;i<n;i++)
 #define forr(t,i,n) for(t i=n-1;i>=0;i--)
 #define print(x) for(const auto &e: (x)) { cout<<e<<" "; } cout<<endl
+#define F(i,a,b) for(int i = (int)(a); i <= (int)(b); i++)
+#define RF(i,a,b) for(int i = (int)(a); i >= (int)(b); i--)
 
 using namespace std;
 

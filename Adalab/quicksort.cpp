@@ -22,9 +22,7 @@ int partition(int a[],int l,int h)
     return j;
 }
 void quicksort(int a[],int l,int h)
-{
-    
-    if(l<h){
+{    if(l<h){
         int t=partition(a,l,h);
         quicksort(a,l,t-1);
         quicksort(a,t+1,h);  
@@ -32,10 +30,7 @@ void quicksort(int a[],int l,int h)
 }
 void swap(int &x,int &y)
 {
-    int t;
-    t=x;
-    x=y;
-    y=t;
+    int t;t=x;x=y;y=t;
 }
 int main()
 {

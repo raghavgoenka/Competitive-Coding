@@ -19,7 +19,7 @@ class Triangle :public shape{
     public :
         void initialize()
         {
-            cout <<"Enter the three sides of triangle"<<endl;
+            cout <<"Enter the sides of triangle"<<endl;
             cin >>a>>b>>c;
         }
         void computearea()
@@ -63,9 +63,9 @@ class Rectangle : public shape{
 };
 int main()
 {
-    shape *s[3];
+    shape *s[2];
     int ch;
-    for (int i=0;i<3;i++)
+    for (int i=0;i<2;i++)
     {
         cout <<"1.Triangle\n2.Rectangle\nPick the shape: \n";
         cin >> ch;
@@ -85,7 +85,7 @@ int main()
         }
         
     }
-    for (int j=0;j<3;j++)
+    for (int j=0;j<2;j++)
         {
             s[j]->display();
         }

@@ -1,4 +1,3 @@
-//https://codeforces.com/contest/1538/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,15 +30,32 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   int n;cin>>n;
-   int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
+   int n,x;cin>>n>>x;
+   int odd=0,even=0;
+   forf(int ,i,n){int num;cin>>num;if(num%2==0){even++;}else{odd++;}}
+   if(x%2==0&&odd>0&&even>0)
+   {
+       if(odd%2==0){odd--;}
+       
+       if(odd>0&&even>0&&odd+even>=x){cout<<"YES"<<endl;return;}
+       else{cout<<"NO"<<endl;return;}
+   }
+  else if(x%2!=0&&odd>0)
+  {
+      if(odd>=x){cout<<"YES"<<endl;return;}
+      if(odd%2==0)
+      {
+          odd--;
+          if(odd+even>=x){cout<<"YES"<<endl;return;}
+           else{cout<<"NO"<<endl;return;}
+      }
+      else if(odd+even>=x){cout<<"YES"<<endl;return;}
+      else{cout<<"NO"<<endl;return;}
+      
+  }
+   else if(odd==0||even==0){cout<<"NO"<<endl;}
+   
+return ;
 }
 
 int main(){

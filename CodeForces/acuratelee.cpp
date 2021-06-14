@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1538/problem/B
+//https://codeforces.com/contest/1369/problem/B#
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -32,14 +32,25 @@ typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
    int n;cin>>n;
-   int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
+   string s,res="";cin>>s;
+   int zero=0,flag=0,one=0,ind=0;
+   for(int i=n-1;i>=0;i--)
+   {      
+        
+         if((one>0||(i==0&&s[i]=='1'))&&zero>0&&(s[i]=='0'||(i==0&&s[i]=='1'))){ if(s[i]=='1'){s.erase(i,ind-(i));}
+         else{s.erase(i+1,ind-(i+1));}
+         
+         flag=1;one=0;zero=0;ind=0;i=i+2;continue;}
+         else  if(s[i]=='0'&&one==0){if(zero==0){ind=i;}zero++;continue;}
+          else if(zero>0&&s[i]=='1'){one++;continue;}
+        
+          else if(s[i]=='1'&&zero==0){continue;}
+   
+
+
+   }
+   cout<<s<<endl;
+
 }
 
 int main(){

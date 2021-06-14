@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1538/problem/B
+//https://codeforces.com/problemset/problem/110/A
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,15 +31,12 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   int n;cin>>n;
-   int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
+   string s;cin>>s;
+   int c=0;
+   forf(int,i,s.size()){if(s[i]=='4'||s[i]=='7'){c++;}}
+   if(c==4||c==7){cout<<"YES"<<endl;}
+   else{cout<<"NO"<<endl;}
+   
 }
 
 int main(){
@@ -47,7 +44,7 @@ int main(){
 
     flash;
 
-    ll t; cin >> t;
+    ll t=1;
     while(t--){
         solve();
     }

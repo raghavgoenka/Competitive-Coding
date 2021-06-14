@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1538/problem/B
+//https://codeforces.com/contest/342/problem/A
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -32,22 +32,35 @@ typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
    int n;cin>>n;
-   int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
-}
+   mll mp;
+   forf(int,i,n){int num;cin>>num;mp[num]++;}
+   int p=mp[1];
+  
+ int c=0;
+ if(mp[1]==0){cout<<"-1"<<endl;return;}
+ if(mp[1]!=(n/3)){cout<<"-1"<<endl;return;}
+ if(mp[3]>mp[6]){cout<<"-1"<<endl;return;}
+ if((mp[2]+mp[3])!=n/3){cout<<"-1"<<endl;return;}
+if(mp[4]+mp[6] != (n/3)){cout<<"-1"<<endl;return;}
+
+ while(mp[1]>0&&mp[2]>0&&mp[4]>0){
+  if(mp[1]>0&&mp[2]>0&&mp[4]>0){cout<<"1 2 4"<<endl;mp[1]--;mp[2]--;mp[4]--;c=1;}}
+  while(mp[1]>0&&mp[2]>0&&mp[6]>0){
+  if(mp[1]>0&&mp[2]>0&&mp[6]>0){cout<<"1 2 6"<<endl;mp[1]--;mp[2]--;mp[6]--;c=1;}}
+while(mp[1]>0&&mp[3]>0&&mp[6]>0){
+  if(mp[1]>0&&mp[3]>0&&mp[6]>0){cout<<"1 3 6"<<endl;mp[1]--;mp[3]--;mp[6]--;c=1;}}
+
+  if(c==0){cout<<"-1"<<endl;return;}
+  
+ 
+  }
 
 int main(){
     
 
     flash;
 
-    ll t; cin >> t;
+    ll t=1;
     while(t--){
         solve();
     }

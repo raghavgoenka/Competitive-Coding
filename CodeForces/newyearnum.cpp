@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1538/problem/B
+//https://codeforces.com/contest/1475/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,15 +31,12 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   int n;cin>>n;
-   int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
+   ll n;cin>>n;
+   if(n/2020>=n%2020)
+   {
+       cout<<"YES"<<endl;//then 2021 can be used to make the sum equal to to n!!
+   }
+   else{cout<<"NO"<<endl;}
 }
 
 int main(){

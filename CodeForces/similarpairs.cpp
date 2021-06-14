@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1538/problem/B
+//https://codeforces.com/contest/1360/problem/C
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -32,14 +32,25 @@ typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
    int n;cin>>n;
+   int even=0,odd=0,one_pair=0;
    int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
+   forf(int,i,n)
+   {
+       int p;cin>>p;
+       arr[i]=p;
+       if(p%2==0){even++;}
+       else{odd++;}
+   }
+   sort(arr,arr+n);
+   if((odd/2 + even/2) ==(n/2)){cout<<"YES"<<endl;return;}
+   forf(int,i,n-1){if(arr[i+1]-arr[i]==1){one_pair++;break;odd--;even--;}}
+   
+   n=n/2;
+   int c=(one_pair + (odd/2) + (even/2));
+//    cout<<c<<endl;
+   if( c==n){cout<<"YES"<<endl;return;}
+   else{cout<<"NO"<<endl;return;}
+
 }
 
 int main(){

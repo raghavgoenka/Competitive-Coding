@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1538/problem/B
+//https://codeforces.com/problemset/problem/1517/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -30,16 +30,27 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
+bool sortcol( const vector<ll>& v1,
+               const vector<ll>& v2 ) {
+ return v1[1] < v2[1];
+}
 void solve(){
-   int n;cin>>n;
-   int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
+   int n,m;cin>>n>>m;
+   vll vp[n];
+   forf(int,i,n)
+   {
+       forf(int,j,m){ll num;cin>>num;vp[i].pb(num);}
+       vp[i].sort();
+      ll temp=vp[i][i+1];
+      vp[]
+   }
+   ll sum=0,mn=LONG_MAX;;
+  forf(int,i,n){
+      forf(int,j,n){mn=min(mn,vp[j][i]);}
+      sum+=mn;
+      mn=LONG_MAX;
+  }
+  cout<<sum<<endl;
 }
 
 int main(){

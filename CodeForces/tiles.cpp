@@ -1,4 +1,3 @@
-//https://codeforces.com/contest/1538/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -30,16 +29,32 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
+#define p 998244353  
+ll  power(ll x, ll y)
+{
+    int res = 1;     
+ 
+    x = x % p; 
+  
+    if (x == 0) return 0; 
+ 
+    while (y > 0)
+    {
+        
+        if (y & 1)
+            res = (res*x) % p;
+ 
+        
+        y = y>>1; 
+        x = (x*x) % p;
+    }
+    return res;
+}
+ 
 void solve(){
-   int n;cin>>n;
-   int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
+   int a,b;cin>>a>>b;
+   ll ans=power(2,a+b);
+   cout<<ans<<endl;
 }
 
 int main(){
@@ -47,7 +62,7 @@ int main(){
 
     flash;
 
-    ll t; cin >> t;
+    ll t=1;
     while(t--){
         solve();
     }

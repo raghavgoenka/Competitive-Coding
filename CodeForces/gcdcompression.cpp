@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1538/problem/B
+//https://codeforces.com/contest/1370/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -32,14 +32,43 @@ typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
    int n;cin>>n;
-   int arr[n];
-   ll sum=0;
-   forf(int,i,n){cin>>arr[i];sum+=arr[i];}
-   if(sum%n!=0){cout<<"-1"<<endl;return;}
-   else{sum=sum/n;}
-   int k=0;
-   forf(int,i,n){if(arr[i]>sum){k++;}}
-   cout<<k<<endl;
+   vi e,o;
+   forf(int,i,2*n){int p;cin>>p;
+    if(p%2==0){e.pb(i+1);}
+    else{o.pb(i+1);}
+   }
+   if(e.size()>0&&o.size()>0){
+       int c=n-1;
+       int a=o.size();
+       int b=e.size();
+       if(a%2!=0){a--;}
+       if(b%2!=0){b--;}
+       for(int i=0;i<a;i+=2)
+       {
+           cout<<o[i]<<" "<<o[i+1]<<endl;
+           c--;
+       }
+       for(int i=0;i<b&&c>0;i+=2)
+       {
+           cout<<e[i]<<" "<<e[i+1]<<endl;
+           c--;
+       }
+       return;
+   }
+   else if(e.size()==0)
+   {  int c=n-1;
+       for(int i=0;i<o.size()&&c>0;i+=2)
+       {cout<<o[i]<<" "<<o[i+1]<<endl;
+         c--;
+       }
+       return;
+   }
+    else if(o.size()==0)
+   {   int c=n-1;
+       for(int i=0;i<e.size()&&c>0;i+=2)
+       {cout<<e[i]<<" "<<e[i+1]<<endl;c--;}
+       return;
+   }
 }
 
 int main(){

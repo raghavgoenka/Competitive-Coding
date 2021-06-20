@@ -2,11 +2,11 @@
 #include <iostream>
 
 using namespace std;
-
+ bool isPrime[10000000+1];
 int main() {
 	int N;
 	cin >> N;
-     bool isPrime[N+1];
+    
         for(int i = 0; i <= N;++i) {
             isPrime[i] = true;
         }

@@ -29,6 +29,7 @@ int visited[1000001];
 void dfs(ll node)
 {
   visited[node]=1;
+  cout<<node<<" ";
   for(ll node:v[node])
   {
       if(visited[node]!=1){dfs(node);}
@@ -50,10 +51,11 @@ void solve(){
        if(visited[i+1]!=1)
        {
            dfs(i+1);
-           con_components++;
+           cout<<endl;
+        //    con_components++;
        }
    }
-  cout<<con_components<<endl;
+//   cout<<con_components<<endl;
 //   if(con_components==1&&(m==(n-1))){cout<<"YES"<<endl;}
 //   else{cout<<"NO"<<endl;}
 }

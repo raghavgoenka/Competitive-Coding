@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1369/problem/B#
+//https://codeforces.com/contest/1369/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 

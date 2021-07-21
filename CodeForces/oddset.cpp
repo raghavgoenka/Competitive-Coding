@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1294/problem/C
+//https://codeforces.com/contest/1542/problem/A
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,31 +31,21 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   ll n;cin>>n;
-  vl v;
-  ll p=n;
-  for(int i=2;i*i<=n;i++)
-  {
-      if(n%i==0)
-      {
-          v.pb(i);
-          n=n/i;
-      }
-  }
-  v.pb(n); // we r decreasing so it is less than actual n;
-  if(v.size()<3){cout<<"NO"<<endl;return;}
-  else if(v.size()>=3)
-  {
-      int a=v[0];
-      int b=v[1];
-      int c=p/(a*b);
-      if(c==1|| a==b || a==c || b==c){cout<<"NO"<<endl;return;}
-      else{
-          cout<<"YES"<<endl<<a<<" "<<b<<" "<<c<<endl;
-      }
-  }
- 
+   int n;cin>>n;
+   int odd=0,even=0;
   
+   forf(int,i,2*n)
+   {
+       int p;cin>>p;
+       if(p%2==0){even++;}
+       else{odd++;}
+    }
+
+   if(even==n&&odd==n){cout<<"YES"<<endl;}
+   else{cout<<"NO"<<endl;}
+
+
+
 }
 
 int main(){
@@ -70,3 +60,5 @@ int main(){
     
     return 0;
 }
+
+// vector revers

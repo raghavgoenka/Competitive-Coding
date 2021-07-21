@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1294/problem/C
+//https://codeforces.com/contest/1550/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,31 +31,27 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   ll n;cin>>n;
-  vl v;
-  ll p=n;
-  for(int i=2;i*i<=n;i++)
+   int n,a,b;cin>>n>>a>>b;
+   string s;cin>>s;
+   int res=a*n;
+   if(b>0)
+   {
+       res+=b*n;
+       cout<<res<<endl;return;
+   }
+   int i=0,pair_0=0,pair_1=0;
+   while(i<n)
   {
-      if(n%i==0)
+      char c=s[i];
+      while(i<n&& s[i]== c)
       {
-          v.pb(i);
-          n=n/i;
+          i++;
       }
+      if(c=='0'){pair_0++;}
+      else{pair_1++;}
   }
-  v.pb(n); // we r decreasing so it is less than actual n;
-  if(v.size()<3){cout<<"NO"<<endl;return;}
-  else if(v.size()>=3)
-  {
-      int a=v[0];
-      int b=v[1];
-      int c=p/(a*b);
-      if(c==1|| a==b || a==c || b==c){cout<<"NO"<<endl;return;}
-      else{
-          cout<<"YES"<<endl<<a<<" "<<b<<" "<<c<<endl;
-      }
-  }
- 
-  
+  res+=(((pair_0+pair_1)/2)+1)*b;
+cout<<res<<endl;
 }
 
 int main(){

@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1294/problem/C
+//https://codeforces.com/contest/451/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,31 +31,24 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   ll n;cin>>n;
-  vl v;
-  ll p=n;
-  for(int i=2;i*i<=n;i++)
-  {
-      if(n%i==0)
-      {
-          v.pb(i);
-          n=n/i;
-      }
-  }
-  v.pb(n); // we r decreasing so it is less than actual n;
-  if(v.size()<3){cout<<"NO"<<endl;return;}
-  else if(v.size()>=3)
-  {
-      int a=v[0];
-      int b=v[1];
-      int c=p/(a*b);
-      if(c==1|| a==b || a==c || b==c){cout<<"NO"<<endl;return;}
-      else{
-          cout<<"YES"<<endl<<a<<" "<<b<<" "<<c<<endl;
-      }
-  }
- 
-  
+   int n;cin>>n;
+   int a[n],b[n];
+   forf(int,i,n){cin>>a[i];b[i]=a[i];}
+   sort(b,b+n);
+   int in1=-1,in2=-1;
+   forf(int,i,n){if(a[i]!=b[i]){in1=i;break;}}
+   forr(int,i,n){if(a[i]!=b[i]){in2=i;break;}}
+   if(in1==-1&&in2==-1){cout<<"yes"<<endl<<"1 1"<<endl;return;}
+   int a1=in1,b1=in2;
+   while(in1<in2)
+   {
+       int tmp=a[in2];
+       a[in2]=a[in1];
+       a[in1]=tmp;
+       in1++;in2--;
+   }
+   forf(int,i,n){if(a[i]!=b[i]){cout<<"no"<<endl;return;}}
+  cout<<"yes"<<endl<<a1+1<<" "<<b1+1<<endl;
 }
 
 int main(){
@@ -63,7 +56,7 @@ int main(){
 
     flash;
 
-    ll t; cin >> t;
+    ll t=1;
     while(t--){
         solve();
     }

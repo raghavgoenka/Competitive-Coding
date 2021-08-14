@@ -30,10 +30,7 @@ return seq.size();
 int main(void)
 {
 
-	 #ifndef ONLINE_JUDGE
-	 freopen("i.txt","r",stdin);
-	 freopen("output.txt","w",stdout);
-     #endif
+	
 	ll n;cin>>n;
 	ll arr[n];
 	for(ll i=0;i<n;i++)

@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1487/problem/D
+//https://codeforces.com/contest/1602/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -29,22 +29,42 @@ typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
-typedef map<long long ,long long>mll;
-
+typedef map<int ,long long>mll;
 void solve(){
    int n;cin>>n;
-   int res=0;
-   int k=2;
-   ll i=4;
-   while(i<n){
+  
+   int arr[n];
+   mll m;
+   forf(int,i,n){cin>>arr[i];m[arr[i]]++;}
+   
+   int vl [n][n];
+   int mx_count=0;
+   forf(int ,i,n){vl[mx_count][i]=arr[i];}
+   mx_count=1;
+   while(true)
+   {
+      for(int i=0;i<n;i++){vl[mx_count][i]=(m[vl[mx_count-1][i]]);}
+      int c=0;
+      forf(int,i,n){
+          if(vl[mx_count][i]==vl[mx_count-1][i]){c++;}
+      }
+      if(c==n){break;}
+     c=0;
+      m.clear();
+      forf(int,i,n){m[vl[mx_count][i]]++;}
+      mx_count++;
 
-      res++;
-      i+=4*k;
-     
-      k++;
 
    }
-   cout<<res<<endl;
+   
+   ll q;cin>>q;
+   while(q--)
+   {
+       int ax,k;cin>>ax>>k;
+       if(k>=mx_count){cout<<vl[mx_count][ax-1]<<endl;}
+       else{cout<<vl[k][ax-1]<<endl;}
+   }
+
 }
 
 int main(){

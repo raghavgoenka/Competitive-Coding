@@ -75,7 +75,8 @@
         "valarray": "cpp",
         "variant": "cpp",
         "rope": "cpp",
-        "slist": "cpp"
+        "slist": "cpp",
+        "span": "cpp"
     },
     "git.ignoreLimitWarning": true,
     "C_Cpp.errorSquiggles": "Disabled"

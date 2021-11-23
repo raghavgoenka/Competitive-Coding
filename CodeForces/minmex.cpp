@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1165/problem/A
+//https://codeforces.com/contest/1566/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,34 +31,23 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   int n,x,y;cin>>n>>x>>y;
-   string s,t="",ch="";cin>>s;
-  ch+='1';
-   forf(int,i,y){ch+='0';}
+   string s;
+   cin>>s;
+   string p=s;
+   int n=s.size();
+   sort(s.begin(),s.end());
    
-  
-   for(int i=n-x;i<n;i++){
-       
-       t+=s[i];
+   if(s[0]=='0'&&s[n-1]=='0'){cout<<"1"<<endl;return;}
+   else if(s[0]=='1'&&s[n-1]=='1'){cout<<"0"<<endl;return;}
+   int count=0;
+   forf(int,i,n){
+       if(p[i]=='0'){continue;}
+       else if(p[i]=='1'&& p[i-1]=='0'){count++;}
+       if(count>=2){break;}
    }
-   int k=0;
-  
-//   cout<<t.size()<<" "<<ch.size()<<" ";
-  
-   for(int i=0;i<(t.size()-(ch.size()));i++)
-   { 
-     if(t[i]!='0'){k++;}
-   }   
-//    cout<<k<<" ";
-  int p=t.size()-1;
-   for(int i=ch.size()-1;i>=0;i--){
-       if(t[p]!=ch[i]){k++;}
-       p--;
-   }
-   cout<<k<<endl;
- 
-
-
+   if(p[n-1]=='0'){count++;}
+   if(count<2){cout<<count<<endl;}
+   else{cout<<2<<endl;}
 }
 
 int main(){
@@ -66,7 +55,7 @@ int main(){
 
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

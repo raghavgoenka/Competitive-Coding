@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1165/problem/A
+//https://codeforces.com/contest/1612/problem/C
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,33 +31,54 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   int n,x,y;cin>>n>>x>>y;
-   string s,t="",ch="";cin>>s;
-  ch+='1';
-   forf(int,i,y){ch+='0';}
-   
-  
-   for(int i=n-x;i<n;i++){
-       
-       t+=s[i];
+   ll k,x;cin>>k>>x;
+   if(k==1){
+       cout<<"1"<<endl;return;
    }
-   int k=0;
-  
-//   cout<<t.size()<<" "<<ch.size()<<" ";
-  
-   for(int i=0;i<(t.size()-(ch.size()));i++)
-   { 
-     if(t[i]!='0'){k++;}
-   }   
-//    cout<<k<<" ";
-  int p=t.size()-1;
-   for(int i=ch.size()-1;i>=0;i--){
-       if(t[p]!=ch[i]){k++;}
-       p--;
-   }
-   cout<<k<<endl;
- 
+   ll ss=x;
+   ll totmsg=2*k-1;
+   ll sum=k*(k+1)/2;
+   if(x==sum){cout<<k<<endl;return;}
+   if(x>sum){
+      
+       x=x-sum;
+      ll sum2=sum-k;
+      ll tot=sum+sum2;
+     
+      if(ss>=tot){cout<<2*k-1<<endl;return;}
+      ll fst=2*(k-1)+1;
+      fst=fst*fst;
+     
+      x=x*2;
+      double rt=fst-double(4*x);
+     
+       rt=double(sqrt(rt));
+      
+      rt=rt+(2*(k-1)+1);
+      rt=rt/2;
+    cout<<rt<<" ";
+      if(ceil(rt)==floor(rt)){
+           cout<<ll(ceil(rt))+k<<endl;
+       }
+       else{
+           cout<<ll(floor(rt))+k<<endl;
+       }
 
+
+   }
+   else{
+       x=x*2;
+        double xt=4*x;;
+       double rt=sqrt(1+xt);
+       rt=rt-1;
+       rt=rt/2;
+       if(ceil(rt)==floor(rt)){
+           cout<<ceil(rt)*1<<endl;
+       }
+       else{
+           cout<<ceil(rt)*1<<endl;
+       }
+   }
 
 }
 
@@ -66,7 +87,7 @@ int main(){
 
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

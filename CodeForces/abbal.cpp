@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1165/problem/A
+//https://codeforces.com/contest/1606/problem/A
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -31,34 +31,25 @@ typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
-   int n,x,y;cin>>n>>x>>y;
-   string s,t="",ch="";cin>>s;
-  ch+='1';
-   forf(int,i,y){ch+='0';}
-   
-  
-   for(int i=n-x;i<n;i++){
-       
-       t+=s[i];
+   string s;cin>>s;
+   int n=s.size();
+   int c1=0,c2=0;
+   forf(int,i,n-1)
+   {
+       if(s[i]=='a'&&s[i+1]=='b'){c1++;}
+       else if(s[i]=='b'&&s[i+1]=='a'){c2++;}
    }
-   int k=0;
-  
-//   cout<<t.size()<<" "<<ch.size()<<" ";
-  
-   for(int i=0;i<(t.size()-(ch.size()));i++)
-   { 
-     if(t[i]!='0'){k++;}
-   }   
-//    cout<<k<<" ";
-  int p=t.size()-1;
-   for(int i=ch.size()-1;i>=0;i--){
-       if(t[p]!=ch[i]){k++;}
-       p--;
+   if(c1==c2){cout<<s<<endl;return;}
+   if(c1!=c2)
+   {
+       string c="";
+       if(c1>c2){
+           if(s[0]=='a'){s[0]='b';}
+       }
+       else{if(s[0]=='b'){s[0]='a';}}
+
    }
-   cout<<k<<endl;
- 
-
-
+  cout<<s<<endl;
 }
 
 int main(){
@@ -66,7 +57,7 @@ int main(){
 
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

@@ -1,5 +1,4 @@
-
-
+//https://codeforces.com/contest/988/problem/C
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -8,8 +7,8 @@
 #define ff first
 #define ss second
 #define endl "\n"
-#define mod 1000000007
 #define EPS 1e-9
+#define mod 1000000007
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define forf(t,i,n) for(t i=0;i<n;i++)
@@ -58,6 +57,16 @@ ll power(ll x,ll y)
 }
 
 void solve(){
+   int n;cin>>n;
+   vvll v;
+   while(n--)
+   {
+      
+      int m;cin>>m;
+      vll p(m);
+      forf(int,i,n){cin>>p[i];}
+      v.pb(p);
+   } 
    
 }
 
@@ -66,7 +75,7 @@ int main(){
 
     flash;
 
-    ll t; cin >> t;
+    ll t=1;
     while(t--){
         solve();
     }

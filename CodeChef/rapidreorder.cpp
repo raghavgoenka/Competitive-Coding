@@ -1,5 +1,4 @@
-
-
+//https://www.codechef.com/LTIME102B/problems/RPDRDNG
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -58,7 +57,29 @@ ll power(ll x,ll y)
 }
 
 void solve(){
-   
+   ll n;cin>>n;
+   vll v(2*n);
+   mll mp;
+   n=n*2;
+   forf(ll,i,n){cin>>v[i];mp[v[i]]++;}
+   if(n==2&&mp.size()==1){cout<<v[0]<<endl;return;}
+   vll p;
+   for(auto i:mp){p.pb(i.ff);}
+   ll mid=p.size()/2;
+   if(p.size()%2==0){mid--;}
+
+sort(all(p));
+
+   forf(ll,i,p.size())
+   {   
+      
+        if((i==mid)&&mp[p[mid]]!=3){cout<<-1<<endl;return;}
+       else if(i==(p.size()-1)&&mp[p[p.size()-1]]!=1){cout<<-1<<endl;return;}
+        else if(mp[p[i]]!=2&&i!=mid&&i!=(p.size()-1)){cout<<-1<<endl;return;}
+
+   }
+   forf(int,i,p.size()){cout<<p[i]<<" ";}
+cout<<endl;
 }
 
 int main(){

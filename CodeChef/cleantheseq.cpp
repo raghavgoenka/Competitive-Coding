@@ -1,3 +1,4 @@
+//https://www.codechef.com/FZBZ21B/problems/CLESEQ
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -16,11 +17,6 @@
 #define RF(i,a,b) for(int i = (int)(a); i >= (int)(b); i--)
 
 using namespace std;
-#pragma GCC diagnostic ignored "-Wunused-variable" // Ignore unused variable warning
-#pragma GCC diagnostic ignored "-Wunknown-pragmas" // Ignore unknown pragmas warning
-#pragma GCC optimize("Ofast")
-#pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
-#pragma GCC optimize("unroll-loops")
 
 typedef long long int ll;
 typedef unsigned long long ull;
@@ -34,28 +30,40 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
-// GCD
-ll gcd(ll a, ll b) { if (b == 0) { return a; } return gcd(b, a % b); }
- 
-// LCM
-ll lcm(ll a, ll b) { return (a / gcd(a, b)) * b; }
-
-ll power(ll x,ll y)
-{
-    ll res = 1;
-    while (y > 0)
-    {
-        if (y & 1){
-            res=(res*x)%mod;
-        }
-        y=y>>1;
-        x=(x*x)%mod;
-    }
-    return res%mod;
-}
-
 void solve(){
+   ll n,m;cin>>n>>m;
+  
+   vl v(n);
+   forf(int,i,n){cin>>v[i];}
    
+   if(m==1){cout<<"0"<<endl;return;}
+   mll mp1;
+   int c=0;
+   forf(int,i,n-1){
+       if(v[i]!=v[i+1]){mp1[v[i]]++;mp1[v[i+1]]++;c++;}
+   }
+   mll mp;
+   forf(int,i,n)
+    {
+        int j=i;
+        while(j<n && v[i]==v[j])
+        {
+            j++;
+        }
+        if(i-1>=0 && j<n)
+        {
+            if(v[i-1]!=v[j])
+            mp[v[i]]++;
+            
+        }
+        i=j-1;
+    }
+   for(int i=1;i<=m;i++)
+   {
+    //    cout<<mp1[i]<<" ";
+       cout<<c-mp1[i]+mp[i]<<" ";
+   }
+   cout<<endl;
 }
 
 int main(){

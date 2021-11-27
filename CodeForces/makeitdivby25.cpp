@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/1593/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -16,11 +17,6 @@
 #define RF(i,a,b) for(int i = (int)(a); i >= (int)(b); i--)
 
 using namespace std;
-#pragma GCC diagnostic ignored "-Wunused-variable" // Ignore unused variable warning
-#pragma GCC diagnostic ignored "-Wunknown-pragmas" // Ignore unknown pragmas warning
-#pragma GCC optimize("Ofast")
-#pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
-#pragma GCC optimize("unroll-loops")
 
 typedef long long int ll;
 typedef unsigned long long ull;
@@ -34,28 +30,40 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
-// GCD
-ll gcd(ll a, ll b) { if (b == 0) { return a; } return gcd(b, a % b); }
- 
-// LCM
-ll lcm(ll a, ll b) { return (a / gcd(a, b)) * b; }
-
-ll power(ll x,ll y)
-{
-    ll res = 1;
-    while (y > 0)
-    {
-        if (y & 1){
-            res=(res*x)%mod;
-        }
-        y=y>>1;
-        x=(x*x)%mod;
-    }
-    return res%mod;
-}
-
 void solve(){
+   ll n;cin>>n;
+   ll n1=n;
+   string s=to_string(n);
+   if(n%25==0){cout<<0<<endl;return;}
+  int num=0,rem=0,flag=1,t=0,c=0,d=0;
+   while(n>0)
+   {
+        rem=n%10;
+        if(rem==5&&flag==1){t=5;flag=0;}
+        else{
+           num=rem*10+t;
+           if(num%25==0&&flag!=1){break;}
+           else{c++;}
+        }
+        n=n/10;
+   }
+  
+   flag=1;
+   while(n1>0)
+   {
+        rem=n1%10;
+        if(rem==0&&flag==1){t=0;flag=0;}
+        else{
+           num=rem*10+t;
+           if(num%25==0&&flag!=1){break;}
+           else{d++;}
+        }
+        n1=n1/10;
+   }
+
    
+   cout<<min(c,d)<<endl;
+
 }
 
 int main(){

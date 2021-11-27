@@ -1,3 +1,4 @@
+//https://www.codechef.com/FZBZ21B/problems/SUBMIMX
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -16,11 +17,6 @@
 #define RF(i,a,b) for(int i = (int)(a); i >= (int)(b); i--)
 
 using namespace std;
-#pragma GCC diagnostic ignored "-Wunused-variable" // Ignore unused variable warning
-#pragma GCC diagnostic ignored "-Wunknown-pragmas" // Ignore unknown pragmas warning
-#pragma GCC optimize("Ofast")
-#pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
-#pragma GCC optimize("unroll-loops")
 
 typedef long long int ll;
 typedef unsigned long long ull;
@@ -34,28 +30,29 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
-// GCD
-ll gcd(ll a, ll b) { if (b == 0) { return a; } return gcd(b, a % b); }
- 
-// LCM
-ll lcm(ll a, ll b) { return (a / gcd(a, b)) * b; }
-
-ll power(ll x,ll y)
-{
-    ll res = 1;
-    while (y > 0)
-    {
-        if (y & 1){
-            res=(res*x)%mod;
-        }
-        y=y>>1;
-        x=(x*x)%mod;
-    }
-    return res%mod;
-}
-
 void solve(){
+   ll n,m;cin>>n>>m;
+   if(n==m){cout<<0<<endl;return;}
+   if(m==0){ll p=n*(n+1)/2;cout<<p<<endl;return;}
+
+   int mid=n/2;
+   if(m==1){
+       ll p=mid*(mid+1)/2;
+       ll d=(mid-1)*mid/2;
+       if(n%2!=0){cout<<2*p<<endl;return;}
+       else{cout<<p+d<<endl;return;}
+   }
+   if(m>=mid){cout<<n-m<<endl;return;}
+   int l=n-m;
+   int rm=m+1;
+   int p=l/rm;
+   int rem=l%rm;
+
    
+
+   ll res=rem*(p+1)*(p+2)/2+(rm-rem)*(p)*(p+1)/2;
+
+    cout<<res<<endl;
 }
 
 int main(){

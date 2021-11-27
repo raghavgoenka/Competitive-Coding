@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/1614/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -16,11 +17,6 @@
 #define RF(i,a,b) for(int i = (int)(a); i >= (int)(b); i--)
 
 using namespace std;
-#pragma GCC diagnostic ignored "-Wunused-variable" // Ignore unused variable warning
-#pragma GCC diagnostic ignored "-Wunknown-pragmas" // Ignore unknown pragmas warning
-#pragma GCC optimize("Ofast")
-#pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
-#pragma GCC optimize("unroll-loops")
 
 typedef long long int ll;
 typedef unsigned long long ull;
@@ -29,33 +25,42 @@ typedef vector<int> vi;
 typedef vector<long> vl;
 typedef vector<long long> vll;
 typedef vector<vector<int>> vvi;
-typedef vector<pair<int,int>>vp;
+typedef vector<pair<long long,long long >>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
-// GCD
-ll gcd(ll a, ll b) { if (b == 0) { return a; } return gcd(b, a % b); }
- 
-// LCM
-ll lcm(ll a, ll b) { return (a / gcd(a, b)) * b; }
-
-ll power(ll x,ll y)
-{
-    ll res = 1;
-    while (y > 0)
-    {
-        if (y & 1){
-            res=(res*x)%mod;
-        }
-        y=y>>1;
-        x=(x*x)%mod;
-    }
-    return res%mod;
-}
-
 void solve(){
-   
+   int n;cin>>n;
+    // vi a(n);
+    vp a;
+    forf(int,i,n){int p;cin>>p;a.pb({p,i});}
+    sort(rall(a));
+    int ct[n+1];
+    ct[0]=0;
+    ll res=0;
+    int j=0,k=0,flag=0;
+
+    forf(int,i,n)
+    { if(flag==0){
+        j+=1;
+        ct[a[i].second+1]=j;
+      
+        res+=2*abs(0-j)*a[i].ff;
+       
+        flag=1;
+        }
+        else{k=k-1;ct[a[i].ss+1]=k;res+=2*abs(0-k)*a[i].ff;flag=0;}
+        
+    }
+    cout<<res<<endl;
+    forf(int,i,n+1)
+    {
+        cout<<ct[i]<<" ";
+    }
+    cout<<endl;
+
+
 }
 
 int main(){

@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/1593/problem/C
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -16,11 +17,6 @@
 #define RF(i,a,b) for(int i = (int)(a); i >= (int)(b); i--)
 
 using namespace std;
-#pragma GCC diagnostic ignored "-Wunused-variable" // Ignore unused variable warning
-#pragma GCC diagnostic ignored "-Wunknown-pragmas" // Ignore unknown pragmas warning
-#pragma GCC optimize("Ofast")
-#pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
-#pragma GCC optimize("unroll-loops")
 
 typedef long long int ll;
 typedef unsigned long long ull;
@@ -34,28 +30,21 @@ typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
-// GCD
-ll gcd(ll a, ll b) { if (b == 0) { return a; } return gcd(b, a % b); }
- 
-// LCM
-ll lcm(ll a, ll b) { return (a / gcd(a, b)) * b; }
-
-ll power(ll x,ll y)
-{
-    ll res = 1;
-    while (y > 0)
-    {
-        if (y & 1){
-            res=(res*x)%mod;
-        }
-        y=y>>1;
-        x=(x*x)%mod;
-    }
-    return res%mod;
-}
-
 void solve(){
-   
+   int n,k;cin>>n>>k;
+   vl v(k);
+   forf(int,i,k){cin>>v[i];}
+   sort(all(v));
+   int count=0,cat=0;
+  
+   forr(int,i,k)
+   {
+      
+       if(v[i]-cat>0){count++;cat+=n-v[i];}
+       else{break;}
+       
+   }
+   cout<<count<<endl;
 }
 
 int main(){

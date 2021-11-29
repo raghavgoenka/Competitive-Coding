@@ -1,3 +1,4 @@
+//https://www.codechef.com/FOUR21B/problems/S07E09
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -6,8 +7,8 @@
 #define ff first
 #define ss second
 #define endl "\n"
+#define mod 1000000007
 #define EPS 1e-9
-#define mod 10000000
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define forf(t,i,n) for(t i=0;i<n;i++)
@@ -66,7 +67,24 @@ ll power(ll x,ll y)
 }
 
 void solve(){
+   int n;cin>>n;
+   vl v;
+   int c=0;
+   mll mp;
+   forf(int,i,n){int p;cin>>p;{v.pb(p);}if(p==0){c++;}mp[p]++;}
+   if(v.size()==1){cout<<v[0]<<endl;return;}
+   sort(rall(v));
+  if(c>0){cout<<n-c<<endl;return;}
+  
+  ll sum=1;
+  int f=mp[v[n-1]];
+  sum=v[n-1]*n;
+  
+  sum+=n-f;
    
+   
+   cout<<sum<<endl;
+
 }
 
 int main(){

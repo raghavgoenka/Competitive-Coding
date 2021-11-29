@@ -1,3 +1,4 @@
+//https://www.codechef.com/FOUR21B/problems/S06E06
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -6,8 +7,8 @@
 #define ff first
 #define ss second
 #define endl "\n"
+#define mod 1000000007
 #define EPS 1e-9
-#define mod 10000000
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define forf(t,i,n) for(t i=0;i<n;i++)
@@ -66,7 +67,33 @@ ll power(ll x,ll y)
 }
 
 void solve(){
-   
+   int n,k;
+   cin>>n>>k;
+   string s=to_string(n);
+   vi v;
+   int p=0;
+   forf(int,i,s.size()){v.pb(s[i]-'0');p+=9-v[i];}
+   sort(all(v));
+
+   if(s.size()==1){ll sum=v[0]+k;if(sum>=9){sum=9;}cout<<sum<<endl;return;}
+    
+    if(k>=p){ll sum=pow(9,s.size());cout<<sum<<endl;return;}
+   int i=0;
+  
+   while(k--)
+   {   
+       sort(all(v));
+       
+       
+       if(v[0]==9){cout<<pow(9,s.size())<<endl;return;}
+       
+       v[i]++;
+        
+    }
+   ll sum=1;
+
+   forf(int,i,v.size()){if(v[i]==0){sum=0;break;}sum*=v[i];}
+   cout<<sum<<endl;
 }
 
 int main(){
@@ -81,3 +108,7 @@ int main(){
     
     return 0;
 }
+
+
+
+

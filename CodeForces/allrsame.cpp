@@ -35,9 +35,24 @@ void solve(){
    vl v(n);
    int even=0,odd=0;
    mll mp;
-   forf(int,i,n){cin>>v[i];if(v[i]%2==0){even++;}else{odd++;}mp[v[i]]++;}
-   if(mp.size()==1){cout<<v[0]<<endl;return;}
-   
+   forf(int,i,n){cin>>v[i];mp[v[i]]++;}
+
+   if(mp.size()==1){cout<<-1<<endl;return;}
+   vll df;
+   sort(all(v));
+   for(int i=1;i<n;i++)
+   {
+       df.pb(v[i]-v[i-1]);
+   }
+   sort(all(df));
+   ll gc=df[df.size()-1];
+   forr(int,i,df.size()){
+       if(df[i]==0){break;}
+       gc=__gcd(gc,df[i]);
+
+   }
+   cout<<gc<<endl;
+
   
 }
 

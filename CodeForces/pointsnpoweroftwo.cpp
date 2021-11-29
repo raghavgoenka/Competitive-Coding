@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/988/problem/D
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -64,8 +65,71 @@ ll power(ll x,ll y)
     }
     return res%mod;
 }
+bool is2power(ll n)
+{
+    if(n==0)
+   return false;
+ 
+   return (ceil(log2(n)) == floor(log2(n)));
+}
 
 void solve(){
+   int n;cin>>n;
+   vl v(n);
+   forf(int,i,n){cin>>v[i];}
+   sort(all(v));
+   int a=0,b=0,c=0,d=-1,e=-1,f=-1;
+   if(n==1){if(is2power(v[0])){cout<<1<<endl<<v[0]<<endl;return;}else{cout<<0<<endl;return;}}
+   if(n==2){}
+   forf(int,i,n-2)
+   { 
+       F(j,i+1,n-1)
+       {
+           F(k,j+1,n-1)
+           {
+               
+               if(a==0)
+               { 
+                   if(is2power(v[i])){d=v[i];a=1;}
+                   else if(is2power(v[j])){d=v[j];a=1;}
+                   else if(is2power(v[k])){d=v[k];a=1;}
+               }
+               if(b==0)
+               {
+                   ll p=abs(v[i]-v[j]);
+                   ll p1=abs(v[i]-v[k]);
+                   ll p2=abs(v[j]-v[k]);
+                   if(is2power(p)){d=v[i];e=v[j];b=1;}
+                   else if(is2power(p1)){d=v[i];e=v[k];b=1;}
+                   else if(is2power(p2)){d=v[j];e=v[k];b=1;}
+               }
+               if(c==0)
+               {
+                    ll p=abs(v[i]-v[j]);
+                   ll p1=abs(v[i]-v[k]);
+                   ll p2=abs(v[j]-v[k]);
+                   if(is2power(p)&&is2power(p1)&&is2power(p2)){
+                       cout<<v[i]<<" "<<v[j]<<" "<<v[k]<<endl;
+                       d=v[i];e=v[j];f=v[k];c=1;}
+                  
+               }
+               if(c==1){break;}
+           }
+       }
+   }
+   if(d!=-1&&e!=-1&&f!=-1)
+   {   cout<<3<<endl;
+       cout<<d<<" "<<e<<" "<<f<<endl;
+   }
+   else if(d!=-1&&e!=-1)
+   { cout<<2<<endl;
+       cout<<d<<" "<<e<<endl;
+   }
+   else if(d!=-1)
+   { 
+       cout<<1<<endl;
+       cout<<d<<endl;
+   }
    
 }
 
@@ -74,7 +138,7 @@ int main(){
 
     flash;
 
-    ll t; cin >> t;
+    ll t=1;
     while(t--){
         solve();
     }

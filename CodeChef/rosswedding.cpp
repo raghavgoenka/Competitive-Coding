@@ -1,3 +1,4 @@
+//https://www.codechef.com/FOUR21B/problems/S04E23
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -6,8 +7,8 @@
 #define ff first
 #define ss second
 #define endl "\n"
+#define mod 1000000007
 #define EPS 1e-9
-#define mod 10000000
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define forf(t,i,n) for(t i=0;i<n;i++)
@@ -66,7 +67,35 @@ ll power(ll x,ll y)
 }
 
 void solve(){
-   
+   int n,p,q;cin>>n>>p>>q;
+   string s;cin>>s;
+   int one=0,zero=0;
+   forf(int,i,n){if(s[i]=='1')one++;else zero++;}
+   p=abs(p);q=abs(q);
+
+int a=0,b=0,flag=0;;
+  if(p!=0){a=1;b=0;flag=1;}
+  else if(q!=0){a=0;b=1;flag=0;}
+//   if(a==p&&b==q){cout<<"YES"<<endl;return;}
+    
+    for(int i=1;i<n;i++)
+    {
+        if(s[i]=='1')
+        {
+            if(flag==0){b++;}
+            else{a++;}
+        }
+        else if(s[i]=='0')
+        {
+           if(flag==0){a++;flag=1;}
+            else{b++;flag=0;}
+        }
+
+    //    if(a==p&&b==q){cout<<"YES"<<endl;return;}
+    }
+  if(a==p&&b==q){cout<<"YES"<<endl;return;} 
+cout<<"NO"<<endl;
+
 }
 
 int main(){

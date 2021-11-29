@@ -37,7 +37,7 @@ ull fib(ull n)
 
 ull calculateSum(ull l, ull r)
 {
-  
+
     
     ull sum = (fib(r + 2) - fib(l + 1))%mod;
     return sum;

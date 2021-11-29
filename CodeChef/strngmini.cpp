@@ -1,3 +1,4 @@
+//https://www.codechef.com/LTIME102B/problems/STRGMNZ
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -6,8 +7,8 @@
 #define ff first
 #define ss second
 #define endl "\n"
+#define mod 1000000007
 #define EPS 1e-9
-#define mod 10000000
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define forf(t,i,n) for(t i=0;i<n;i++)
@@ -30,11 +31,12 @@ typedef vector<int> vi;
 typedef vector<long> vl;
 typedef vector<long long> vll;
 typedef vector<vector<int>> vvi;
-typedef vector<pair<long long,long long>>vp;
+typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
+
 bool isPrime(ll n) 
 { 
 if (n <= 1)  return false; 
@@ -45,6 +47,7 @@ if (n%i == 0 || n%(i+2) == 0)
 return false; 
 return true; 
 } 
+
 // GCD
 ll gcd(ll a, ll b) { if (b == 0) { return a; } return gcd(b, a % b); }
  
@@ -64,9 +67,32 @@ ll power(ll x,ll y)
     }
     return res%mod;
 }
-
+ll divv(ll n)
+{
+    
+    for (int i = 3; i <= sqrt(n); i = i + 2)
+    {
+        if (n % i == 0)
+        {
+            return i;
+            //n = n/i;
+        }
+    }
+    return n;
+}
 void solve(){
-   
+   ll n;cin>>n;
+   if(isPrime(n)){
+      cout<<n+1<<endl;return;
+   }
+   if(n%2==0)
+   {
+       cout<<3*(n/2)<<endl;return;
+   }
+
+   ll dd=divv(n);
+   ll pp=(n/dd)*(dd+1);
+   cout<<pp<<endl;
 }
 
 int main(){

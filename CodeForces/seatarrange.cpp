@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/1566/problem/D1
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -30,7 +31,7 @@ typedef vector<int> vi;
 typedef vector<long> vl;
 typedef vector<long long> vll;
 typedef vector<vector<int>> vvi;
-typedef vector<pair<long long,long long>>vp;
+typedef vector<pair<int,int>>vp;
 typedef vector<vector<long long>> vvll;
 typedef vector<string> vs;
 typedef unordered_map<long long, long long> umll;
@@ -64,9 +65,34 @@ ll power(ll x,ll y)
     }
     return res%mod;
 }
-
+bool fn(const pair<long,long> &a,
+              const pair<long,long> &b)
+{
+    if(a.ff==b.ff)
+    {
+        return a.ss>b.ss;
+    }
+    return (a.ff < b.ff);
+}
 void solve(){
-   
+   int n,m;cin>>n>>m;
+   vp v;
+   forf(int,i,m)
+   {
+       ll p;cin>>p;
+       v.pb({p,i+1});
+   }
+   sort(all(v), fn);
+//    forf(int,i,m){cout<<v[i].ff<<" "<<v[i].ss<<endl;}
+   ll cnt=0;
+   forf(int,i,m)
+   {
+       for(int j=0;j<=i;j++)
+       {
+           if(v[j].ss<v[i].ss){cnt++;}
+       }
+   }
+   cout<<cnt<<endl;
 }
 
 int main(){

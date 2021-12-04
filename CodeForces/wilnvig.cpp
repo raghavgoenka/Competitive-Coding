@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/988/problem/D
+//https://codeforces.com/contest/1609/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -65,50 +65,67 @@ ll power(ll x,ll y)
     }
     return res%mod;
 }
-bool is2power(ll n)
-{
-    if(n==0)
-   return false;
- 
-   return (ceil(log2(n)) == floor(log2(n)));
-}
 
 void solve(){
-   int n;cin>>n;
-   vl v(n);
-   mll mp;
-   int a=0,b=0,c=0,d=-1,e=-1,f=-1;
-   forf(int,i,n){cin>>v[i];mp[v[i]]++;}
-   sort(all(v));
-  
-   forf(int,i,n)
-   {  ll pw=1;
-       for(int p=0;p<=30;p++)
-       { 
-          if(mp[v[i]]>0&&mp[v[i]+pw]>0&&mp[v[i]+2*pw]>0)
-          {
-              cout<<3<<endl;
-              cout<<v[i]<<" "<<v[i]+pw<<" "<<v[i]+2*pw<<endl;return;
-          }
-          else if(b==0)
-          {
-                if(mp[v[i]+pw]>0)
-                {
-                    b=1;
-                    e=v[i];
-                    f=v[i]+pw;
-                }
-                
-                
-          }
-          pw=pw*2;
-       } 
+   int n,q;cin>>n>>q;
+   string s;cin>>s;
+   int cnt=0;
+   forf(int,i,n-2){
+       if(s[i]=='a' && s[i+1]=='b' && s[i+2]=='c'){
+           cnt++;
+       }
    }
-   if(b==0){cout<<"1"<<endl;cout<<v[0]<<endl;return;}
-   else if(b==1){
-       cout<<2<<endl;cout<<e<<" "<<f<<endl;return;
+   while(q--)
+   {
+        int i;cin>>i;
+        char c;cin>>c;
+        i--;
+        if((i+2)<n&&s[i]=='a')
+        {
+           if(s[i+1]=='b' && s[i+2]=='c')
+           {
+               cnt--;
+           }
+        }
+        else if(s[i]=='b'&&(i+1)<n&&(i-1)>=0)
+        {
+                 if(s[i-1]=='a' && s[i+1]=='c')
+                 {
+                     cnt--;
+                 }
+        }
+        else if(s[i]=='c')
+        {
+             if((i-2)>=0 && s[i-1]=='b' && s[i-2]=='a')
+             {
+                 cnt--;
+             }
+        }
+
+       if(c=='a')
+       {
+            if((i+2)<n&&s[i+1]=='b'&&s[i+2]=='c')
+            {
+                cnt++;
+            }
+       }
+       else if(c=='b')
+       {
+            if((i-1)>=0 && (i+1)<n&&s[i-1]=='a' && s[i+1]=='c')
+            {
+                cnt++;
+            }
+       }
+       else if(c=='c')
+       {
+            if((i-2)>=0 && s[i-1]=='b' && s[i-2]=='a')
+            {
+                cnt++;
+            }
+       }
+       s[i]=c;
+        cout<<cnt<<endl;
    }
-   
 }
 
 int main(){

@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/988/problem/D
+//https://codeforces.com/contest/988/problem/E
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -65,49 +65,38 @@ ll power(ll x,ll y)
     }
     return res%mod;
 }
-bool is2power(ll n)
+string s;
+int len;
+int check(char a,char b){
+    string x=s; 
+    int pos1=x.rfind(b);
+    if(pos1==-1)return INT_MAX;
+    x.erase(pos1,1);
+    int pos2=x.rfind(a);
+    if(pos2==-1) return INT_MAX;
+    x.erase(pos2,1);
+    int p=0;
+    while(x[p]=='0')p++;
+    return p+(len-pos1-1)+(len-1-pos2-1);
+}
+void solve(){
+   ll n;cin>>n;
+   if(n%25==0){cout<<"0"<<endl;return;}
+   s=to_string(n);
+  
+    len=s.size();
+   ll mn=INT_MAX;
+     mn=min(check('0','0'),min(check('2','5'),min(check('5','0'),check('7','5'))));
+    
+if(mn==INT_MAX)
 {
-    if(n==0)
-   return false;
- 
-   return (ceil(log2(n)) == floor(log2(n)));
+    cout<<-1<<endl;
+}
+else
+{
+    cout<<mn<<endl;
 }
 
-void solve(){
-   int n;cin>>n;
-   vl v(n);
-   mll mp;
-   int a=0,b=0,c=0,d=-1,e=-1,f=-1;
-   forf(int,i,n){cin>>v[i];mp[v[i]]++;}
-   sort(all(v));
-  
-   forf(int,i,n)
-   {  ll pw=1;
-       for(int p=0;p<=30;p++)
-       { 
-          if(mp[v[i]]>0&&mp[v[i]+pw]>0&&mp[v[i]+2*pw]>0)
-          {
-              cout<<3<<endl;
-              cout<<v[i]<<" "<<v[i]+pw<<" "<<v[i]+2*pw<<endl;return;
-          }
-          else if(b==0)
-          {
-                if(mp[v[i]+pw]>0)
-                {
-                    b=1;
-                    e=v[i];
-                    f=v[i]+pw;
-                }
-                
-                
-          }
-          pw=pw*2;
-       } 
-   }
-   if(b==0){cout<<"1"<<endl;cout<<v[0]<<endl;return;}
-   else if(b==1){
-       cout<<2<<endl;cout<<e<<" "<<f<<endl;return;
-   }
    
 }
 

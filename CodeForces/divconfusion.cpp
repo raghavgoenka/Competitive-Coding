@@ -32,13 +32,31 @@ typedef unordered_map<long long, long long> umll;
 typedef map<long long ,long long>mll;
 void solve(){
    int n;cin>>n;
-   vll v;
-    forf(int i,0,n){
-         ll x;cin>>x;
-         v.pb(x);
+   vll v(n);
+    forf(int, i,n){
+        cin>>v[i];
     }
     if(v[0]%2==0){cout<<"NO"<<endl;return;}
+    ll cnt=0;
+    forf(int,i,n)
+    {
+        ll p=i+2;
+        if(v[i]%p!=0){cnt++;continue;}
+        else
+        {  bool flag=false;
+           for(int k=1;k<=cnt;k++)
+           {
+               if(v[i]%(p-k)!=0){cnt++;flag=true;break;}
+           }
+             if(flag==false){cout<<"NO"<<endl;return;}
+        }
+      
+
+    }
     
+cout<<"YES"<<endl;
+
+
 }
 
 int main(){

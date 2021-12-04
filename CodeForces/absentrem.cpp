@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/988/problem/D
+//https://codeforces.com/contest/1613/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -65,49 +65,25 @@ ll power(ll x,ll y)
     }
     return res%mod;
 }
-bool is2power(ll n)
-{
-    if(n==0)
-   return false;
- 
-   return (ceil(log2(n)) == floor(log2(n)));
-}
 
 void solve(){
-   int n;cin>>n;
-   vl v(n);
+   ll n;cin>>n;
+   vll v(n);
    mll mp;
-   int a=0,b=0,c=0,d=-1,e=-1,f=-1;
-   forf(int,i,n){cin>>v[i];mp[v[i]]++;}
+   vll even;
+   vll odd;
+   forf(int,i,n){
+       cin>>v[i];
+      
+   }
    sort(all(v));
-  
-   forf(int,i,n)
-   {  ll pw=1;
-       for(int p=0;p<=30;p++)
-       { 
-          if(mp[v[i]]>0&&mp[v[i]+pw]>0&&mp[v[i]+2*pw]>0)
-          {
-              cout<<3<<endl;
-              cout<<v[i]<<" "<<v[i]+pw<<" "<<v[i]+2*pw<<endl;return;
-          }
-          else if(b==0)
-          {
-                if(mp[v[i]+pw]>0)
-                {
-                    b=1;
-                    e=v[i];
-                    f=v[i]+pw;
-                }
-                
-                
-          }
-          pw=pw*2;
-       } 
-   }
-   if(b==0){cout<<"1"<<endl;cout<<v[0]<<endl;return;}
-   else if(b==1){
-       cout<<2<<endl;cout<<e<<" "<<f<<endl;return;
-   }
+   ll p=v[0];
+  F(i,1,n/2)
+  {
+      cout<<v[i]<<" "<<p<<endl;
+  }
+
+   
    
 }
 
@@ -116,7 +92,7 @@ int main(){
 
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

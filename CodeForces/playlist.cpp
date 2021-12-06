@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1140/problem/B
+//https://codeforces.com/contest/1140/problem/C
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -67,23 +67,31 @@ ll power(ll x,ll y)
 }
 
 void solve(){
-   int n;cin>>n;
-   string s;cin>>s;
-   int a=0,b=0;
+   int n,k;cin>>n>>k;
+   vp v(n);
    forf(int,i,n){
-       if(s[i]=='>'){a++;}
-       else{b++;}
+       cin>>v[i].ss>>v[i].ff;
    }
-   if(a==0||b==0){cout<<"0"<<endl;return;}
+   sort(rall(v));
+  
+   set<pair<ll, ll> > s;
 
-   forf(int,i,n-1)
+   ll res=0,sum=0;
+   forf(int,i,n)
    {
-       if(s[i]!=s[i+1])
-       {
+      s.insert(make_pair(v[i].second, i));
+		sum += v[i].second;
+        
+		while(s.size() > k){
+			auto it = s.begin();
            
-       }
-   }
-
+			sum -= it->first;
+			s.erase(it);
+		}
+        
+		res = max(res, sum * v[i].first);
+    }
+    cout<<res<<endl;
 }
 
 int main(){
@@ -91,7 +99,7 @@ int main(){
 
     flash;
 
-    ll t; cin >> t;
+    ll t=1;
     while(t--){
         solve();
     }

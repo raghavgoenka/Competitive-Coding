@@ -1,14 +1,12 @@
-/*
- * @lc app=leetcode id=46 lang=cpp
- *
- * [46] Permutations
- */
+//https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1#
+#include<bits/stdc++.h>
+using namespace std;
 
-// @lc code=start
-class Solution {
-    
-public:
-    void permutations(vector<int>& nums, vector<vector<int>>& res, vector<int>value,map<int,int>mp)
+ // } Driver Code Ends
+class Solution
+{
+	public:
+	void permutations(string nums, vector<string>& res, string value,map<char,int>mp)
     {
         if(value.size()==nums.size())
         {
@@ -20,7 +18,7 @@ public:
             if(mp[nums[i]]==0){
             
                 mp[nums[i]]=1;
-                value.push_back(nums[i]);
+                value+=(nums[i]);
                 permutations(nums,res,value,mp);
                 value.pop_back();//after recursion call returns this will  pop the element from the value vector
                 mp[nums[i]]=0;//and this will set the element value to 0 in map
@@ -28,17 +26,42 @@ public:
             
         }
     }
-public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> res;
-        map<int,int>mp;
-        vector<int>value;
-        permutations(nums,res,value,mp);
+	
+	    
+		vector<string>find_permutation(string S)
+		{
+		    vector<string> res;
+        map<char,int>mp;
+        string value="";
+        permutations(S,res,value,mp);
+        sort(res.begin(),res.end());
         return res;
-    }
+		}
 };
 
-class Solution {
+
+
+// { Driver Code Starts.
+int main(){
+    int t;
+    cin >> t;
+    while(t--)
+    {
+	    string S;
+	    cin >> S;
+	    Solution ob;
+	    vector<string> ans = ob.find_permutation(S);
+	    for(auto i: ans)
+	    {
+	    	cout<<i<<" ";
+	    }
+	    cout<<"\n";
+    }
+	return 0;
+}
+  // } Driver Code Ends
+
+  class Solution {
     
 public:
     void permutations(int ind,vector<int>& nums, vector<vector<int>>& res)
@@ -66,5 +89,3 @@ public:
         return res;
     }
 };
-// @lc code=end
-

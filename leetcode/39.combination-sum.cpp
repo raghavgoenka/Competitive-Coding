@@ -16,6 +16,11 @@ public:
         }
          return ;
         }
+           else if(target==0){
+             
+            res.push_back(value);
+                return;
+        }
         else if(arr[ind]<=target)
         {
             value.push_back(arr[ind]);

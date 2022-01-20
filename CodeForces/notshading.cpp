@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1184/problem/D1
+//https://codeforces.com/contest/1627/problem/0
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -65,37 +65,40 @@ ll power(ll x,ll y)
     }
     return res%mod;
 }
-// 11 6
-// 7 2
-// 8 2
-// 9 2
-void solve(){
-   ll n,k,m,t;cin>>n>>k>>m>>t;
-   while(t--)
-   {
-       ll x,y;cin>>x>>y;
-       if(x==0)
-       {
-           if(y>=k)
-           {
-               n=y;
-           }
-           else if(k>y)
-           {
-               k=k-y;
-               n=n-y;
-           }
-           cout<<n<<" "<<k<<endl;
-       }
-       else {
 
-          if(y>k){n++;}
-          else{
-              n++;k++;
-          }
-          cout<<n<<" "<<k<<endl;
+void solve(){
+   int n,m,r,c;cin>>n>>m>>r>>c;
+   char a[n][m];
+   int w=0,b=0;
+   forf(int,i,n){
+       forf(int,j,m){
+           cin>>a[i][j];
+           if(a[i][j]=='W'){
+               w++;
+           }
+           else{
+               b++;
+           }
        }
    }
+   if(b==0){
+       cout<<"-1"<<endl;
+       return;
+   }
+   if(a[r-1][c-1]=='B'){
+       cout<<0<<endl;
+       return;
+   }
+   for(int i=0;i<m;i++)
+   {
+       if(a[r-1][i]=='B'){cout<<"1"<<endl;return;}
+   }
+   for(int i=0;i<n;i++)
+   {
+       if(a[i][c-1]=='B'){cout<<"1"<<endl;return;}
+   }
+   cout<<"2"<<endl;
+
 }
 
 int main(){
@@ -103,7 +106,7 @@ int main(){
 
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

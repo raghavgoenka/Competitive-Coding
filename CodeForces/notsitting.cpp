@@ -1,4 +1,4 @@
-//https://codeforces.com/contest/1184/problem/D1
+//https://codeforces.com/contest/1627/problem/B
 #include <bits/stdc++.h>
 #define flash ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
@@ -65,37 +65,25 @@ ll power(ll x,ll y)
     }
     return res%mod;
 }
-// 11 6
-// 7 2
-// 8 2
-// 9 2
-void solve(){
-   ll n,k,m,t;cin>>n>>k>>m>>t;
-   while(t--)
-   {
-       ll x,y;cin>>x>>y;
-       if(x==0)
-       {
-           if(y>=k)
-           {
-               n=y;
-           }
-           else if(k>y)
-           {
-               k=k-y;
-               n=n-y;
-           }
-           cout<<n<<" "<<k<<endl;
-       }
-       else {
 
-          if(y>k){n++;}
-          else{
-              n++;k++;
-          }
-          cout<<n<<" "<<k<<endl;
+void solve(){
+   ll n,m;cin>>n>>m;
+   vll v;
+   for(ll i=0;i<n;i++)
+   {
+       for(ll j=0;j<m;j++)
+       {
+          
+           ll mx=max(i,n-i-1)+max(j,m-j-1);
+           v.pb(mx);
        }
    }
+   sort(all(v));
+   forf(int,i,v.size()){
+       cout<<v[i]<<" ";
+   }
+   cout<<endl;
+   
 }
 
 int main(){
@@ -103,7 +91,7 @@ int main(){
 
     flash;
 
-    ll t=1;
+    ll t; cin >> t;
     while(t--){
         solve();
     }

@@ -1,5 +1,5 @@
 //https://practice.geeksforgeeks.org/problems/length-of-largest-region-of-1s-1587115620/1#
-//similar as max area of island just an extra counter for largest island in the 2d grid
+//similar as number of island just an extra counter for largest island in the 2d grid
 class Solution
 {
     public:

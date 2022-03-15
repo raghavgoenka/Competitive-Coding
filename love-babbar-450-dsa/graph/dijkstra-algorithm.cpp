@@ -12,7 +12,7 @@ class Solution
     {
         // Code here
         vector<int>dis(V,1e9);
-         priority_queue<pair<int,int>> pq;
+        priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>> >pq;
          
          pq.push({0,S});
          dis[S]=0;

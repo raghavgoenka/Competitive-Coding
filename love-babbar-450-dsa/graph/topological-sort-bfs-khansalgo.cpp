@@ -1,4 +1,5 @@
 //https://practice.geeksforgeeks.org/problems/topological-sort/1#
+// topological sort is possible on DAG Directed Acyclic Graph
 #include <bits/stdc++.h>
 using namespace std;
 

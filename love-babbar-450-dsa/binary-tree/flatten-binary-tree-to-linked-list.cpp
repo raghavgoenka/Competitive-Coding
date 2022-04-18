@@ -1,7 +1,7 @@
 //https://practice.geeksforgeeks.org/problems/flatten-binary-tree-to-linked-list/1#
 
 //******IMP CONCEPT********
-//Morris Traversal O(1) space  only used for preorder (Root,Left,Right),postorder(Left,Right,Root)
+//Morris Traversal O(1) space  tree traversal technique
 class Solution
 {
     public:
